@@ -27,6 +27,7 @@ class unattended_upgrades(
     ensure  => file,
     owner   => root,
     group   => root,
+    mode    => 0644,
     content => template('unattended_upgrades/unattended-upgrades.erb'),
   }
 
@@ -34,6 +35,7 @@ class unattended_upgrades(
     ensure  => file,
     owner   => root,
     group   => root,
+    mode    => 0644,
     content => template('unattended_upgrades/auto-upgrades.erb')
   }
 
