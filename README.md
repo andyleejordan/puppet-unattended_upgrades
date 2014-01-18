@@ -17,6 +17,13 @@ This module installs the 'unattended-upgrades' package, installs the
 configuration files using templates, and ensures the service is
 running.
 
+Note that this module is a bit superfluous if you're using
+[puppetlabs/apt](https://github.com/puppetlabs/puppetlabs-apt), as it
+can fully configure unattended upgrades. I realized this only after I
+wrote this package, and personally switched to it in the interest of
+simplicity. However, as this does not require the apt module as a
+dependency, it may still be useful to some.
+
 ## Module Description
 
 This module is intended for Ubuntu and Debian systems, where the
