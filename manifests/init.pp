@@ -1,6 +1,6 @@
 class unattended_upgrades(
   $period        = 1,              # Update period (in days)
-  $repos         = [ 'security' ], # Repos to upgrade
+  $repos         = {},             # Repos to upgrade
   $blacklist     = [],             # Packages to not update
   $email         = '',             # Email for update status
   $autofix       = true,           # Ensure updates keep getting installed
