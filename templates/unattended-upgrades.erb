@@ -1,6 +1,7 @@
 // Automatically upgrade packages from these (origin:archive) pairs
 Unattended-Upgrade::Allowed-Origins {
 <% scope['unattended_upgrades::repos'].each do |repo| -%>
+        "${distro_id}:${distro_id}-<%= repo %>";
         "${distro_id}:${distro_codename}-<%= repo %>";
 <% end -%>
 };
