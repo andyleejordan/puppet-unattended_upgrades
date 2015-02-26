@@ -14,7 +14,8 @@
         "12.04",
         "14.04"
       ]
-    },
+    }
+  ],
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ]
