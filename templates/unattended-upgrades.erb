@@ -1,9 +1,9 @@
-// Automatically upgrade packages from these (origin:archive) pairs
-Unattended-Upgrade::Allowed-Origins {
-<% scope['unattended_upgrades::repos'].each do |repo| -%>
-        "${distro_id}:${distro_codename}-<%= repo %>";
-<% end -%>
-};
+// Automatically upgrade packages from these origin patterns
+Unattended-Upgrade::Origins-Pattern {
+<% scope['unattended_upgrades::repos'].each do |repo, opts| -%>
+        "origin=${distro_id},archive=<%= repo %><% if (defined? opts) %>,label=<%= opts['label'] %><% end %>";
+<% end %>
+}; 
 
 // List of packages to not update
 Unattended-Upgrade::Package-Blacklist {

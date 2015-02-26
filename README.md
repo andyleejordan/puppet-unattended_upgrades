@@ -56,7 +56,7 @@ This module has one class, `unattended_upgrades`, with the following
 parameters:
 
     $period        = 1,              # Update period (in days)
-    $repos         = [ 'security' ], # Repos to upgrade
+    $repos         = {},             # Repos to upgrade - defaults to empty.
     $blacklist     = [],             # Packages to not update
     $email         = '',             # Email for update status
     $autofix       = true,           # Ensure updates keep getting installed
@@ -82,6 +82,37 @@ being automatically installed.
 The `$autoremove` option will clean unused dependencies, further
 configuration is available via the periodic configurations in
 `/etc/apt/apt.conf.d/`.
+
+## Sample 
+
+    # Unattended upgrades
+    $upgrade_blacklist = hiera_array('do_not_upgrade')
+    class {'::unattended_upgrades':
+      period    => '1',
+      repos     => {
+        stable => {
+          label => 'Debian-Security',
+        },
+      },
+      blacklist => $upgrade_blacklist,
+      email     => 'ops@company.com',
+    }
+
+## do_not_upgrade hash
+
+You can define the do_not_upgrade hash in your module or in Hiera. Hiera is a more sensible location for this sort of thing. 
+
+    {
+      "do_not_upgrade": [
+        "nginx(.*)",
+        "apache2(.*)",
+        "postgresql(.*)",
+        "mysql(.*)",
+        "redis-server",
+        "haproxy",
+        "elasticsearch"
+      ]
+    }
 
 ## Limitations
 
