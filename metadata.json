@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "author": "Andrew Schwartzmeyer",
   "summary": "Puppet module that installs and configures the unattended upgrades service",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "source": "git://github.com/andschwa/puppet-unattended_upgrades.git",
   "project_page": "https://github.com/andschwa/puppet-unattended_upgrades",
   "issues_url": "https://github.com/andschwa/puppet-unattended_upgrades/issues",
