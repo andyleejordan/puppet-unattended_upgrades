@@ -15,8 +15,8 @@ class unattended_upgrades(
   $apt_path = '/etc/apt/apt.conf.d/20auto-upgrades'
   $package = 'unattended-upgrades'
 
-  if $operatingsystem !~ /^(Debian|Ubuntu)$/ {
-    fail("${operatingsystem} is not supported.")
+  if $::operatingsystem !~ /^(Debian|Ubuntu)$/ {
+    fail("${::operatingsystem} is not supported.")
   }
 
   package { $package:
