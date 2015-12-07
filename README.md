@@ -65,8 +65,8 @@ parameters:
     $on_error                     = false,                                         # Email only on errors, else alwa
     $autoremove                   = false,                                         # Automatically remove unused dep
     $auto_reboot                  = false,                                         # Automatically reboot if needed
-    $template_unattended_upgrades = 'unattended-upgrades/unattended-upgrades.erb', # Path to config template
-    $template_auto_upgrades       = 'unattended-upgrades/auto-upgrades.erb',       # Path to apt config template
+    $template_unattended_upgrades = 'unattended_upgrades/unattended-upgrades.erb', # Path to config template
+    $template_auto_upgrades       = 'unattended_upgrades/auto-upgrades.erb',       # Path to apt config template
 
 
 Logs are at the usual `/var/log/unattended-upgrades`, and emails will
