@@ -1,14 +1,16 @@
 class unattended_upgrades(
-  $period        = 1,              # Update period (in days)
-  $repos         = {},             # Repos to upgrade
-  $blacklist     = [],             # Packages to not update
-  $email         = '',             # Email for update status
-  $autofix       = true,           # Ensure updates keep getting installed
-  $minimal_steps = true,           # Allows for shutdown during an upgrade
-  $on_shutdown   = false,          # Install only on shutdown
-  $on_error      = false,          # Email only on errors, else always
-  $autoremove    = false,          # Automatically remove unused dependencies
-  $auto_reboot   = false,          # Automatically reboot if needed
+  $period                       = 1,                                             # Update period (in days)
+  $repos                        = {},                                            # Repos to upgrade
+  $blacklist                    = [],                                            # Packages to not update
+  $email                        = '',                                            # Email for update status
+  $autofix                      = true,                                          # Ensure updates keep getting installed
+  $minimal_steps                = true,                                          # Allows for shutdown during an upgrade
+  $on_shutdown                  = false,                                         # Install only on shutdown
+  $on_error                     = false,                                         # Email only on errors, else always
+  $autoremove                   = false,                                         # Automatically remove unused dependencies
+  $auto_reboot                  = false,                                         # Automatically reboot if needed
+  $template_unattended_upgrades = 'unattended_upgrades/unattended-upgrades.erb', # Path to config template
+  $template_auto_upgrades       = 'unattended_upgrades/auto-upgrades.erb',       # Path to apt config template
 ) {
 
   $conf_path = '/etc/apt/apt.conf.d/50unattended-upgrades'
@@ -22,13 +24,13 @@ class unattended_upgrades(
   package { $package:
     ensure => latest,
   }
-  
+
   file { $conf_path:
     ensure  => file,
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('unattended_upgrades/unattended-upgrades.erb'),
+    content => template($template_unattended_upgrades),
   }
 
   file { $apt_path:
@@ -36,7 +38,7 @@ class unattended_upgrades(
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('unattended_upgrades/auto-upgrades.erb')
+    content => template($template_auto_upgrades)
   }
 
   service { $package:

@@ -55,16 +55,19 @@ The simplest use of this module is:
 This module has one class, `unattended_upgrades`, with the following
 parameters:
 
-    $period        = 1,              # Update period (in days)
-    $repos         = {},             # Repos to upgrade - defaults to empty.
-    $blacklist     = [],             # Packages to not update
-    $email         = '',             # Email for update status
-    $autofix       = true,           # Ensure updates keep getting installed
-    $minimal_steps = true,           # Allows for shutdown during an upgrade
-    $on_shutdown   = false,          # Install only on shutdown
-    $on_error      = false,          # Email only on errors, else always
-    $autoremove    = false,          # Automatically remove unused dependencies
-    $auto_reboot   = false,          # Automatically reboot if needed
+    $period                       = 1,                                             # Update period (in days)
+    $repos                        = {},                                            # Repos to upgrade
+    $blacklist                    = [],                                            # Packages to not update
+    $email                        = '',                                            # Email for update status
+    $autofix                      = true,                                          # Ensure updates keep getting ins
+    $minimal_steps                = true,                                          # Allows for shutdown during an u
+    $on_shutdown                  = false,                                         # Install only on shutdown
+    $on_error                     = false,                                         # Email only on errors, else alwa
+    $autoremove                   = false,                                         # Automatically remove unused dep
+    $auto_reboot                  = false,                                         # Automatically reboot if needed
+    $template_unattended_upgrades = 'unattended_upgrades/unattended-upgrades.erb', # Path to config template
+    $template_auto_upgrades       = 'unattended_upgrades/auto-upgrades.erb',       # Path to apt config template
+
 
 Logs are at the usual `/var/log/unattended-upgrades`, and emails will
 be automatically sent if an email is given.
