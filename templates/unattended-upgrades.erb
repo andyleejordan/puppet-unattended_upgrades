@@ -1,14 +1,14 @@
 // Automatically upgrade packages from these origin patterns
 <% if operatingsystem == "Ubuntu" -%>
-	Unattended-Upgrade::Allowed-Origins {
-	<% scope['unattended_upgrades::repos'].each do |repo, opts| -%>
-        	"${distro_id} <%= opts['label'] %>"
-      	<% end -%>
+Unattended-Upgrade::Allowed-Origins {
+<% scope['unattended_upgrades::repos'].each do |repo, opts| -%>
+  "${distro_id} <%= opts['label'] %>"
+<% end -%>
 <% else -%>
-	Unattended-Upgrade::Origins-Pattern {
-	<% scope['unattended_upgrades::repos'].each do |repo, opts| -%>
-        	"origin=${distro_id},archive=<%= repo %><% if (defined? opts) %>,label=<%= opts['label'] %><% end %>";
-	<% end -%>
+Unattended-Upgrade::Origins-Pattern {
+<% scope['unattended_upgrades::repos'].each do |repo, opts| -%>
+  "origin=${distro_id},archive=<%= repo %><% if (defined? opts) %>,label=<%= opts['label'] %><% end %>";
+<% end -%>
 <% end -%>
 };
 
