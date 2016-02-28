@@ -1,6 +1,6 @@
 {
   "name": "andschwa-unattended_upgrades",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Andrew Schwartzmeyer",
   "summary": "Puppet module that installs and configures the unattended upgrades service",
   "license": "MIT",
@@ -17,7 +17,9 @@
     }
   ],
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {
+      "name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"
+    }
   ]
 }
 
