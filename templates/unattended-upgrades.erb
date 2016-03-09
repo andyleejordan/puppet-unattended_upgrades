@@ -1,11 +1,11 @@
 // Automatically upgrade packages from these origin patterns
-<% if operatingsystem == "Ubuntu" %>
+<% if @operatingsystem == "Ubuntu" %>
 Unattended-Upgrade::Allowed-Origins {
 <% else %>
 Unattended-Upgrade::Origins-Pattern {
 <% end %>
 
-<% if operatingsystem == "Ubuntu" %>
+<% if @operatingsystem == "Ubuntu" %>
       <% scope['unattended_upgrades::repos'].each do |repo, opts| -%>
         "${distro_id} <%= opts['label'] %>"
       <% end %>
