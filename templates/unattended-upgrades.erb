@@ -1,9 +1,21 @@
 // Automatically upgrade packages from these origin patterns
+<% if @operatingsystem == "Ubuntu" %>
+Unattended-Upgrade::Allowed-Origins {
+<% else %>
 Unattended-Upgrade::Origins-Pattern {
-<% scope['unattended_upgrades::repos'].each do |repo, opts| -%>
-        "origin=<% if (defined? opts and opts['origin'] and opts['origin'] != '') %><%= opts['origin'] %><% else %>${distro_id}<% end %>,archive=<%= repo %><% if (defined? opts) %>,label=<%= opts['label'] %><% end %>";
 <% end %>
-}; 
+
+<% if @operatingsystem == "Ubuntu" %>
+      <% scope['unattended_upgrades::repos'].each do |repo, opts| -%>
+        "${distro_id} <%= opts['label'] %>"
+      <% end %>
+<% else %>
+      <% scope['unattended_upgrades::repos'].each do |repo, opts| -%>
+         "origin=<% if (defined? opts and opts['origin'] and opts['origin'] != '') %><%= opts['origin'] %><% else %>${distro_id}<% end %>,archive=<%= repo %><% if (defined? opts) %>,label=<%= opts['label'] %><% end %>";
+      <% end %>
+<% end %>
+
+};
 
 // List of packages to not update
 Unattended-Upgrade::Package-Blacklist {
@@ -13,7 +25,7 @@ Unattended-Upgrade::Package-Blacklist {
 };
 
 // This option allows you to control if on a unclean dpkg exit
-// unattended-upgrades will automatically run 
+// unattended-upgrades will automatically run
 //   dpkg --force-confold --configure -a
 // The default is true, to ensure updates keep getting installed
 Unattended-Upgrade::AutoFixInterruptedDpkg "<%= scope['unattended_upgrades::autofix'] %>";
@@ -43,8 +55,8 @@ Unattended-Upgrade::MailOnlyOnError "<%= scope['unattended_upgrades::on_error'] 
 // (equivalent to apt-get autoremove)
 Unattended-Upgrade::Remove-Unused-Dependencies "<%= scope['unattended_upgrades::autoremove'] %>";
 
-// Automatically reboot *WITHOUT CONFIRMATION* if a 
-// the file /var/run/reboot-required is found after the upgrade 
+// Automatically reboot *WITHOUT CONFIRMATION* if a
+// the file /var/run/reboot-required is found after the upgrade
 Unattended-Upgrade::Automatic-Reboot "<%= scope['unattended_upgrades::auto_reboot'] %>";
 
 
