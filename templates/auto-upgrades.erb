@@ -1,2 +1,11 @@
+//#
+//#
+//#
+//# WARNING: THIS FILE IS MANAGED BY PUPPET - MANUAL MODIFICATIONS WILL BE RESET AUTOMATICALLY
+//#
+//#
+//#
+
+
 APT::Periodic::Update-Package-Lists "<%= scope['unattended_upgrades::period']%>";
 APT::Periodic::Unattended-Upgrade "<%= scope['unattended_upgrades::period']%>";
