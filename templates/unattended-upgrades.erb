@@ -1,3 +1,12 @@
+//#
+//#
+//#
+//# WARNING: THIS FILE IS MANAGED BY PUPPET - MANUAL MODIFICATIONS WILL BE RESET AUTOMATICALLY
+//#
+//#
+//#
+
+
 // Automatically upgrade packages from these origin patterns
 Unattended-Upgrade::Origins-Pattern {
 <% scope['unattended_upgrades::repos'].each do |repo, opts| -%>

@@ -42,7 +42,7 @@ class unattended_upgrades(
   }
 
   service { $package:
-    ensure    => running,
+    enable    => true,
     subscribe => [ File[$conf_path], File[$apt_path], Package[$package], ],
   }
 }

@@ -32,6 +32,9 @@ scheduling updates with cron by hand (and in fact,
 'unattended-upgrades' utilizes cron), and using cron-apt (more detail
 [here](https://help.ubuntu.com/community/AutomaticSecurityUpdates)).
 
+## Dependencies
+Make sure you have already installed a cron daemon.
+
 ## Setup
 
 ### What andschwa-unattended_upgrades affects
