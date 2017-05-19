@@ -18,11 +18,13 @@ configuration files using templates, and ensures the service is
 running.
 
 Note that this module is a bit superfluous if you're using
-[puppetlabs/apt](https://github.com/puppetlabs/puppetlabs-apt), as it
-can fully configure unattended upgrades. I realized this only after I
-wrote this package, and personally switched to it in the interest of
-simplicity. However, as this does not require the apt module as a
-dependency, it may still be useful to some.
+[puppetlabs/apt](https://github.com/puppetlabs/puppetlabs-apt),
+as it can fully configure unattended upgrades
+(via [voxpupuli/puppet-unattended_upgrades](https://github.com/voxpupuli/puppet-unattended_upgrades).
+I realized this only after I wrote this package,
+and personally switched to it in the interest of simplicity. 
+However, as this does not require the apt module as a dependency,
+it may still be useful to some.
 
 ## Module Description
 
